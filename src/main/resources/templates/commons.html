@@ -48,7 +48,7 @@
                                     <a class="nav-link" href="#">СХЕМА ЗАЛА</a>
                                 </li>
                                 <li class="nav-item" th:if="${#request.userPrincipal != null && #request.isUserInRole('ROLE_USER')}">
-                                    <a class="nav-link" href="#">КАБИНЕТ</a>
+                                    <a class="nav-link" href="#">ПРОФИЛЬ</a>
                                 </li>
                                 <li class="nav-item" th:if="${#request.userPrincipal != null && #request.isUserInRole('ROLE_ADMIN')}">
                                     <a class="nav-link" href="#">УПРАВЛЕНИЕ</a>
@@ -59,7 +59,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="/about">О НАС</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item" th:if="${#request.userPrincipal != null}">
                                     <a class="nav-link" href="/logout">ВЫЙТИ</a>
                                 </li>
                             </ul>

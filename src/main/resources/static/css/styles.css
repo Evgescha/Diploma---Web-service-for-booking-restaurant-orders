@@ -18,9 +18,12 @@ select{
     height: 33px;
 }
 .menu .item-image img{
-	height: 150px;
+/* 	height: 150px; */
 }
 
 .menu .item-info div{
 	padding:5px;
+}
+.menu .row.item{
+	margin: 10px 0;
 }
