@@ -14,8 +14,9 @@ import lombok.Data;
 public class TypeTable extends AbstractEntity {
 	String name;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "typeTable")
-	private List<MyTable> myTables = new ArrayList<MyTable>();
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "table")
+	private List<Order> orders = new ArrayList<Order>();
+
 
 	@Override
 	public String toString() {

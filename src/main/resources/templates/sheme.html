@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Схема зала</title>
+    <div th:replace="~{commons :: head}"></div>
+</head>
+
+<body>
+    
+	<div th:replace="~{commons :: nav}"></div>
+    <section id="sheme" class="sheme">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                	<img alt="Sheme" src="/img/sheme.png" style="width: 100%">
+            	</div>
+            	<div class="col-md-4">
+            		<div class="sheme-item" th:each="entity : ${types}">
+	                	<a th:href="'/profile/bookingAt/'+${entity.id}" th:text="'Оформить бронь на стол '+${entity.name}"></a>
+            		</div>
+            	</div>
+            </div>
+        </div>
+    </section>
+    
+
+</body>
+
+</html>

@@ -13,28 +13,28 @@
     <section class="profile" id="profile">
     <div class="container">
         <div class="row">
-            <div class="col">
+            <div class="col-md-6 m-auto">
                 <div class="profile-info">
                 	<h2 class="text-center">Профиль</h2>
                     <form action="/profile/update" method="POST">
                         <div class="profile-item profile-firstname">
-                            <label>Имя</label>
+                            <label class="col-md-6">Имя</label>
                             <input type="text" name="firstname" th:value="${entity.firstname}" required>
                         </div>
                         <div class="profile-item profile-lastname">
-                            <label>Фамилия</label>
+                            <label class="col-md-6">Фамилия</label>
                             <input type="text" name="lastname"  th:value="${entity.lastname}" required>
                         </div>
                         <div class="profile-item profile-email">
-                            <label>Адрес электронной почты</label>
+                            <label class="col-md-6">Адрес электронной почты</label>
                             <input type="email" name="email"  th:value="${entity.email}" required>
                         </div>
                         <div class="profile-item profile-login">
-                            <label>Логин</label>
+                            <label class="col-md-6">Логин</label>
                             <input type="text" name="username"  th:value="${entity.username}" required disabled>
                         </div>
                         <div class="profile-item profile-password">
-                            <label>Пароль</label>
+                            <label class="col-md-6">Пароль</label>
                             <input type="password" name="password" required>
                         </div>
                         <div class="profile-form-buttons justify-content-between d-flex m-3">
@@ -49,6 +49,33 @@
     </div>
 </section>
     
+<section class="orders" id="orders">
+    <div class="container">
+        <div class="order-items">
+            <div class="row item" th:each="entityM:${entity.myOrders}" >
+                <div class="h3 order-title" th:text="'Заказ на '+${entityM.dates}">Заказ на 25,25,2025</div>
+                <div class="order-table" th:text="'Стол: '+${entityM.table}">Stol</div>
+                <div class="order-table" th:text="'Количество человек: '+${entityM.table}">Stol</div>
+                <div class="order-food">
+                    <div class="order-food-item" th:each="food:${entityM.foods}">
+                        <div class="col-md-7 item-info">
+                            <div class="order-food-item-name" th:text="'Название: '+${entity.name}"></div>
+                            <div class="order-food-item-type" th:text="'Тип блюда: '+${entity.typeFood.name}"></div>
+                            <div class="order-food-item-prize" th:text="'Цена блюда: '+${entity.price}"></div>
+                            <div class="order-food-item-buttons">
+                                <a th:href="@{/user/deleteFood/{id}(id=${entity.id})}" class="btn btn-primary" th:if="${entity.status.id==1}">
+                                    <i class="fas fa-trash">Удалить</i>
+                                </a>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 
 </body>
 

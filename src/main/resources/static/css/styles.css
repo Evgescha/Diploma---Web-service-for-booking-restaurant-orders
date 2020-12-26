@@ -27,3 +27,10 @@ select{
 .menu .row.item{
 	margin: 10px 0;
 }
+.orders .item{
+	border: 1px solid black;
+	margin: 5px;
+}
+.orders .item div{
+	width: 100%;
+}
