@@ -10,8 +10,14 @@ public class CrudImpl<Entity> implements CrudService<Entity> {
 	public JpaRepository<Entity, Long> repository;
 
 	@Override
-	public void create(Entity entity) throws Exception {
-		repository.saveAndFlush(entity);
+	public boolean create(Entity entity) {
+		try {
+			repository.saveAndFlush(entity);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 
 	@Override
@@ -20,13 +26,26 @@ public class CrudImpl<Entity> implements CrudService<Entity> {
 	}
 
 	@Override
-	public void update(Entity entity) throws Exception {
-		repository.saveAndFlush(entity);
+	public boolean update(Entity entity) {
+		try {
+			repository.saveAndFlush(entity);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 
 	@Override
-	public void delete(long id) throws Exception {
-		repository.deleteById(id);
+	public boolean delete(long id) throws Exception {
+		try {
+			repository.deleteById(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+		
 	}
 
 	public CrudImpl(JpaRepository<Entity, Long> repository) {
