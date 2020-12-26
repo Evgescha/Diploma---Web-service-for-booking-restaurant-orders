@@ -48,7 +48,7 @@
                                     <a class="nav-link" href="#">СХЕМА ЗАЛА</a>
                                 </li>
                                 <li class="nav-item" th:if="${#request.userPrincipal != null && #request.isUserInRole('ROLE_USER')}">
-                                    <a class="nav-link" href="#">ПРОФИЛЬ</a>
+                                    <a class="nav-link" href="/profile">ПРОФИЛЬ</a>
                                 </li>
                                 <li class="nav-item" th:if="${#request.userPrincipal != null && #request.isUserInRole('ROLE_ADMIN')}">
                                     <a class="nav-link" href="#">УПРАВЛЕНИЕ</a>

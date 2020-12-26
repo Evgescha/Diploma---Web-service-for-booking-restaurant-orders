@@ -64,4 +64,13 @@ public class User extends AbstractEntity {
 		return roleNames;
 	}
 
+	public void update(String password, String firstname, String lastname, String email) {
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+	}
+	
+	
+
 }

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Главная</title>
+    <div th:replace="~{commons :: head}"></div>
+</head>
+
+<body>
+    
+	<div th:replace="~{commons :: nav}"></div>
+	<h3 th:if="${success}" class="text-center">Вы успешно обновили данные</h3>
+    <section class="profile" id="profile">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="profile-info">
+                	<h2 class="text-center">Профиль</h2>
+                    <form action="/profile/update" method="POST">
+                        <div class="profile-item profile-firstname">
+                            <label>Имя</label>
+                            <input type="text" name="firstname" th:value="${entity.firstname}" required>
+                        </div>
+                        <div class="profile-item profile-lastname">
+                            <label>Фамилия</label>
+                            <input type="text" name="lastname"  th:value="${entity.lastname}" required>
+                        </div>
+                        <div class="profile-item profile-email">
+                            <label>Адрес электронной почты</label>
+                            <input type="email" name="email"  th:value="${entity.email}" required>
+                        </div>
+                        <div class="profile-item profile-login">
+                            <label>Логин</label>
+                            <input type="text" name="username"  th:value="${entity.username}" required disabled>
+                        </div>
+                        <div class="profile-item profile-password">
+                            <label>Пароль</label>
+                            <input type="password" name="password" required>
+                        </div>
+                        <div class="profile-form-buttons justify-content-between d-flex m-3">
+                            <button type="submit" class=" btn btn-primary">Обновить</button>
+                            <button type="submit" class=" btn btn-primary" formaction="/profile/delete">Удалить профиль</button>
+                            <button type="button" class="btn btn-primary" onclick="history.back()">Назад</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+
+</body>
+
+</html>
