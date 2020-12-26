@@ -42,7 +42,7 @@ public class FoodController {
 	@RequestMapping(path = "/delete/{id}")
 	public String delete(Model model, @PathVariable("id") Long id) throws Exception {
 		service.delete(id);
-		return "redirect:/food";
+		return "redirect:/admin/control";
 	}
 
 	@RequestMapping(path = { "/edit", "/edit/{id}" })
@@ -65,6 +65,6 @@ public class FoodController {
 
 		entity.setTypeFood(typeFoodService.read(catId));
 		service.create(entity);
-		return "redirect:/food";
+		return "redirect:/admin/control";
 	}
 }

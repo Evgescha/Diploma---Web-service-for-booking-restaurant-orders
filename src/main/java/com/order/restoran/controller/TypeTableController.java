@@ -45,12 +45,12 @@ public class TypeTableController {
 	@RequestMapping(path = "/delete/{id}")
 	public String delete(Model model, @PathVariable("id") Long id) throws Exception {
 		service.delete(id);
-		return "redirect:/typeTable";
+		return "redirect:/admin/control";
 	}
 
 	@RequestMapping(path = "/create", method = RequestMethod.POST)
 	public String createOrUpdate(TypeTable entity) throws Exception {
 		service.create(entity);
-		return "redirect:/typeTable";
+		return "redirect:/admin/control";
 	}
 }

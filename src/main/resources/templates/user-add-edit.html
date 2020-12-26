@@ -27,12 +27,16 @@
                             <td><input type="text" th:field="*{lastname}" class="form-control" required/></td>
                         </tr>
                         <tr>
-                            <th><label class="mx-2">Адрес</label></th>
-                            <td><input type="text" th:field="*{adres}" class="form-control" required/></td>
+                            <th><label class="mx-2">Email</label></th>
+                            <td><input type="text" th:field="*{email}" class="form-control" required/></td>
                         </tr>
                         <tr>
                             <th><label class="mx-2">Логин</label></th>
-                            <td><input type="text" th:field="*{username}" class="form-control" required disabled/></td>
+                            <td><input type="text" th:field="*{username}" class="form-control" required /></td>
+                        </tr>
+                         <tr>
+                            <th><label class="mx-2">Пароль</label></th>
+                            <td><input type="text" th:field="*{password}" class="form-control" required /></td>
                         </tr>
                     </tbody>
                 </table>

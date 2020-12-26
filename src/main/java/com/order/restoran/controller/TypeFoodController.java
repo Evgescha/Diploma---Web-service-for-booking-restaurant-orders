@@ -45,12 +45,12 @@ public class TypeFoodController {
 	@RequestMapping(path = "/delete/{id}")
 	public String delete(Model model, @PathVariable("id") Long id) throws Exception {
 		service.delete(id);
-		return "redirect:/typeFood";
+		return "redirect:/admin/control";
 	}
 
 	@RequestMapping(path = "/create", method = RequestMethod.POST)
 	public String createOrUpdate(TypeFood entity) throws Exception {
 		service.create(entity);
-		return "redirect:/typeFood";
+		return "redirect:/admin/control";
 	}
 }
