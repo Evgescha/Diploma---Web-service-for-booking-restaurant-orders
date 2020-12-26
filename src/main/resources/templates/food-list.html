@@ -18,7 +18,7 @@
                     <div th:switch="${list}" class="container my-5">                        
                         <div class="col-md-12">
                             <h2 th:case="null"> Записей не найдено </h2>
-                            <div th:case="*">
+                            <div th:case="*" style="overflow: scroll;">
                                 <table class="table table-striped table-responsive-md">
                                     <thead>
                                         <tr>
@@ -36,7 +36,7 @@
                                             <td>
                                             	<img alt="Изображение" th:src="${entity.image}" height="150">
                                             </td>
-                                            <td th:text="${entity.description}"></td>
+                                            <td th:text="${entity.description}" class="d-flex" width="400px"></td>
                                             <td th:text="${entity.price}"></td>
                                             <td class="btnInTable widthLastCol" >
                                                 <a th:href="@{/food/edit/{id}(id=${entity.id})}" class="btn btn-primary ">

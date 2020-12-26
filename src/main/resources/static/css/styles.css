@@ -17,3 +17,10 @@ select{
     width: 100%;
     height: 33px;
 }
+.menu .item-image img{
+	height: 150px;
+}
+
+.menu .item-info div{
+	padding:5px;
+}

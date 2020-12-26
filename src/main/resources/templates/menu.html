@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Главная</title>
+    <div th:replace="~{commons :: head}"></div>
+</head>
+
+<body>
+    
+	<div th:replace="~{commons :: nav}"></div>
+
+
+<section id="menu" class="menu">
+    <div class="container d-flex">
+        <div class="menu-info col-md-8">
+            <div class="row item"  th:each="entity : ${foods}">
+                <div class="col-md-4 item-image">
+                    <img th:src="${entity.image}" alt="изображение" >
+                </div> 
+                <div class="col-md-8 item-info">
+                    <div class="item-name" th:text="'Название: '+${entity.name}"></div>
+                    <div class="item-type" th:text="'Тип блюда: '+${entity.typeFood.name}"></div>
+                    <div class="item-prize" th:text="'Цена блюда: '+${entity.price}"></div>
+                    <div class="item-description" th:text="'Описание '+${entity.description}"></div>
+                </div>
+            </div>    
+        </div>
+        <div class="menu-types col-md-4">
+            <div>Меню</div>
+            <div class="menu-types-list">
+                <div class="menu-types-item"  th:each="entity : ${types}">
+     	           <a th:href="'/menu/type/'+${entity.id}" class="menu-types-item-name" th:text="${entity.name}">Салаты</a>
+                </div>
+            </div>            
+        </div>
+        
+    </div>
+</section>
+
+
+
+
+
+
+</body>
+
+</html>
