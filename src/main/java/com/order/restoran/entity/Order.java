@@ -26,7 +26,7 @@ public class Order extends AbstractEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "table_id")
-	MyTable table;
+	TypeTable table;
 
 	Date dates;
 
@@ -35,4 +35,12 @@ public class Order extends AbstractEntity {
 	@ManyToOne
 	@JoinColumn(name = "status_id")
 	Status status;
+
+	@Override
+	public String toString() {
+		return "Order [foods=" + foods + ", table=" + table + ", dates=" + dates + ", peopleCount=" + peopleCount
+				+ ", status=" + status + "]";
+	}
+	
+	
 }

@@ -19,4 +19,5 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 	Order findByCreatorAndDates(User creator,Date dates);
 	
 	Order findByCreatorAndStatus(User creator,Status status);
+	Order findByCreatorAndStatusAndDates(User creator,Status status,Date dates);
 }

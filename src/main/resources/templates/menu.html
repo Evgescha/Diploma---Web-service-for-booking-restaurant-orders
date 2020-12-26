@@ -32,7 +32,7 @@
                         </a>
                     </div>
                     <div class="item-buttons"  th:if="${#request.userPrincipal != null && #request.isUserInRole('ROLE_USER')}">
-                    	<a th:href="@{/user/addFood/{id}(id=${entity.id})}" class="btn btn-primary ">
+                    	<a th:href="@{/profile/addFood/{id}(id=${entity.id})}" class="btn btn-primary ">
                             <i class="fas fa-edit">В корзину</i>
                         </a>
                     </div>
