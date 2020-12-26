@@ -17,6 +17,6 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-//        registry.addViewController("/login").setViewName("login");
+        registry.addViewController("/about").setViewName("about");
 	}
 }

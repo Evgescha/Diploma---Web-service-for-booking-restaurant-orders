@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Главная</title>
+    <div th:replace="~{commons :: head}"></div>
+</head>
+
+<body>
+    
+	<div th:replace="~{commons :: nav}"></div>
+	<h3 th:if="${success}">Вы успешно зарегистрировались! Можете войти в систему</h3>
+    <section id="main-page">
+        <div class="container">
+            <div class="row">
+                <div class="main-info col-md-8">
+                    <h1 class="main-title">Ресторан La Vita</h1>
+                    <h3 class="main-title-info">лучшие итальянские рецепты</h3>
+                    <div class="main-info d-flex">
+                        <img src="/img/main-rest.jpg" class="main-img col-md-4">
+                        <div class="main-description col-md-8">
+                            <p class="main-description-first">Мы ради приветствовать вас на сайте ресторана!</p>
+                            <p class="main-description-second">Наш ресторан предлагает Вам окунуться в атмосфера французского проазиса.</p>
+                            <p class="main-description-third">Уютная обстановка, приветливый персонал, блюда от нашего шефповава сделают Ваш вечер незабываемым!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="login-form col-md-4 p-5" th:if="${#request.userPrincipal == null}">
+                    <h3 class="login-form-title">Форма авторизации</h3>
+                    <form action="/login" method="POST">
+                        <div class="login-form-loginfield">
+                            <label for="name">Логин:</label>
+                            <input type="name" name="username">
+                        </div>
+                        <div class="login-form-passfield">
+                            <label for="username">Пароль:</label>
+                            <input type="password" name="password">
+                        </div>
+                        <div class="login-form-buttons justify-content-between d-flex m-3">
+                            <button type="submit" class=" btn btn-primary">ВХОД</button>
+                            <a href="/registration" class="login-form-registration btn btn-primary">РЕГИСТРАЦИЯ</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="mini-profile-info col-md-4 p-5 m-auto" th:if="${#request.userPrincipal != null}">
+                    <h3 class="mini-profile-info-title">Пользователь</h3>
+                        <div class="mini-profile-info-username d-flex">
+                            <label >Логин:</label>
+                            <div th:text="${entity.username}">username</div>
+                        </div>
+                        <div class="mini-profile-info-firstname d-flex">
+                            <label >Имя:</label>
+                            <div th:text="${entity.firstname}">firstname</div>
+                        </div>
+                        <div class="mini-profile-info-password d-flex">
+                            <label >Фамилия:</label>
+                            <div th:text="${entity.lastname}">lastname</div>
+                        </div>
+                        <div class="mini-profile-info-buttons justify-content-between d-flex m-3">
+                            <a href="/profile" class="mini-profile-info-btn btn btn-primary">ПРОФИЛЬ</a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+
+</body>
+
+</html>
