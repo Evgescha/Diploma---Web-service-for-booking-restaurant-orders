@@ -123,5 +123,14 @@ public class ProfileController {
 		}
 		return "redirect:/preorder";
 	}
-
+	
+	@RequestMapping(path = "/confirm/{id}", method = RequestMethod.POST)
+	public String confirmOrder(Principal principal, @PathVariable("id") Long id) {
+		//проверка, есть ли не оформленный заказ
+		Order order = serviceOrder.read(id);
+		//устанавливае статус оформлен, и на проверку
+		order.setStatus(serviceStatus.read(2));
+		serviceOrder.update(order);
+		return "redirect:/profile";
+	}
 }

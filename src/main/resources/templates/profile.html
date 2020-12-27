@@ -56,6 +56,7 @@
         <h4 class="text-center">На странице будут отображены блюда заказов, еще не оформленных</h4>
             <div class="row item p-3" th:each="entityM:${entity.myOrders}" >
                 <div class="h3 order-title" th:text="'Заказ на дату:'+${entityM.dates}">Заказ на 25,25,2025</div>
+                <div class="order-table" th:text="'Статус: '+${entityM.status}">status</div>
                 <div class="order-table" th:text="'Стол: '+${entityM.table}">Stol</div>
                 <div class="order-peoples d-flex w-auto mr-5">
 					<div class=" mr-5">Количество человек</div>                	
