@@ -58,6 +58,7 @@
                 <div class="h3 order-title" th:text="'Заказ на дату:'+${entityM.dates}">Заказ на 25,25,2025</div>
                 <div class="order-table" th:text="'Статус: '+${entityM.status}">status</div>
                 <div class="order-table" th:text="'Стол: '+${entityM.table}">Stol</div>
+                <div class="order-table" th:text="'Сумма заказа: '+${#aggregates.sum(entityM.foods.![price])}">Summ</div>                
                 <div class="order-peoples d-flex w-auto mr-5">
 					<div class=" mr-5">Количество человек</div>                	
 	                <div class="ml-1 order-peopleCount" th:text="${entityM.peopleCount}">
@@ -71,7 +72,6 @@
 	                            <tr>
 	                                <th> Тип</th>
 	                                <th> Название</th>
-	                                <th> Изображение</th>
 	                                <th> Цена</th>
 	                            </tr>
 	                        </thead>
@@ -79,9 +79,6 @@
 	                            <tr th:each="entity1 : ${entityM.foods}">
 	                                <td th:text="${entity1.typeFood.name}"></td>
 	                                <td th:text="${entity1.name}"></td>
-	                                <td>
-	                                	<img alt="Изображение" th:src="${entity1.image}" height="150">
-	                                </td>
 	                                <td th:text="${entity1.price}"></td>
 	                            </tr>
 	                        </tbody>

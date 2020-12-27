@@ -39,7 +39,7 @@
                                     <a class="nav-link" href="/preorder">ПРЕДЗАКАЗ</a>
                                 </li>
                                 <li class="nav-item" th:if="${#request.userPrincipal != null && #request.isUserInRole('ROLE_ADMIN')}">
-                                    <a class="nav-link" href="#">БРОНЬ</a>
+                                    <a class="nav-link" href="/admin/booking">БРОНЬ</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/menu">МЕНЮ</a>
