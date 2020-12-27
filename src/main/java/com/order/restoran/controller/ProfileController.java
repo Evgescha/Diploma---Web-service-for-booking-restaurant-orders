@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.order.restoran.entity.Food;
 import com.order.restoran.entity.Order;
 import com.order.restoran.entity.TypeTable;
 import com.order.restoran.entity.User;
@@ -90,30 +91,20 @@ public class ProfileController {
 		}
 		//если у пользователя нет брони в процессе создания
 		if(!isHas) {
-			System.out.println("hass no order");
 			Order temp= new Order();
-			System.out.println("add asatus and table");
 			temp.setTable(table);
-			System.out.println("add creator");
 			temp.setCreator(user);
-			System.out.println("create order");
 			serviceOrder.create(temp);
-			System.out.println("read cteated order");
 			order = serviceOrder.repository.findByCreatorAndStatusAndDates(user,serviceStatus.read(1),null);
 			System.out.println(order);
-			System.out.println("add order to user");
 			user.getMyOrders().add(order);
-			System.out.println("update user");
 			service.update(user);
-			System.out.println("updated user: "+service.read(user.getId()));
 			user=service.read(user.getId());
 			order=user.getMyOrders().get(user.getMyOrders().size()-1);
 			order.setDates(new Date(System.currentTimeMillis()));
 			order.setStatus(serviceStatus.read(1));
 			serviceOrder.update(order);
-			System.out.println("updated user: "+service.read(user.getId()));	
 		}
-		
 		
 		return "redirect:/preorder";
 	}
@@ -122,9 +113,15 @@ public class ProfileController {
 		User user = service.findByUsername(principal.getName());
 		//проверка, есть ли не оформленный заказ
 		Order order=user.getMyOrders().get(user.getMyOrders().size()-1);
-		order.getFoods().remove(serviceFood.read(id));
-		serviceOrder.update(order);
-		return "redirect:/profile";
+		Food food = serviceFood.read(id);
+		for(Food fd:order.getFoods()) {
+			if(fd.getId()==food.getId()) {
+				order.getFoods().remove(fd);
+				serviceOrder.update(order);
+				break;
+			}
+		}
+		return "redirect:/preorder";
 	}
 
 }

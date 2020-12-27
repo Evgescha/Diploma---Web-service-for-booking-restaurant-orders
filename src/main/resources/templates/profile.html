@@ -52,25 +52,41 @@
 <section class="orders" id="orders">
     <div class="container">
         <div class="order-items">
-            <div class="row item" th:each="entityM:${entity.myOrders}" >
-                <div class="h3 order-title" th:text="'Заказ на '+${entityM.dates}">Заказ на 25,25,2025</div>
+        <h3 class="text-center">Страница предзаказа</h3>
+        <h4 class="text-center">На странице будут отображены блюда заказов, еще не оформленных</h4>
+            <div class="row item p-3" th:each="entityM:${entity.myOrders}" >
+                <div class="h3 order-title" th:text="'Заказ на дату:'+${entityM.dates}">Заказ на 25,25,2025</div>
                 <div class="order-table" th:text="'Стол: '+${entityM.table}">Stol</div>
-                <div class="order-table" th:text="'Количество человек: '+${entityM.table}">Stol</div>
-                <div class="order-food">
-                    <div class="order-food-item" th:each="food:${entityM.foods}">
-                        <div class="col-md-7 item-info">
-                            <div class="order-food-item-name" th:text="'Название: '+${entity.name}"></div>
-                            <div class="order-food-item-type" th:text="'Тип блюда: '+${entity.typeFood.name}"></div>
-                            <div class="order-food-item-prize" th:text="'Цена блюда: '+${entity.price}"></div>
-                            <div class="order-food-item-buttons">
-                                <a th:href="@{/user/deleteFood/{id}(id=${entity.id})}" class="btn btn-primary" th:if="${entity.status.id==1}">
-                                    <i class="fas fa-trash">Удалить</i>
-                                </a>
-                            </div>                            
-                        </div>
+                <div class="order-peoples d-flex w-auto mr-5">
+					<div class=" mr-5">Количество человек</div>                	
+	                <div class="ml-1 order-peopleCount" th:text="${entityM.peopleCount}">
+                </div>
+                
+            </div>
+            <div class="order-food">
+                    <div class="order-food-item" >
+                    	<table class="table table-striped table-responsive-md">
+	                        <thead>
+	                            <tr>
+	                                <th> Тип</th>
+	                                <th> Название</th>
+	                                <th> Изображение</th>
+	                                <th> Цена</th>
+	                            </tr>
+	                        </thead>
+	                        <tbody>
+	                            <tr th:each="entity1 : ${entityM.foods}">
+	                                <td th:text="${entity1.typeFood.name}"></td>
+	                                <td th:text="${entity1.name}"></td>
+	                                <td>
+	                                	<img alt="Изображение" th:src="${entity1.image}" height="150">
+	                                </td>
+	                                <td th:text="${entity1.price}"></td>
+	                            </tr>
+	                        </tbody>
+	                    </table>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 </section>
