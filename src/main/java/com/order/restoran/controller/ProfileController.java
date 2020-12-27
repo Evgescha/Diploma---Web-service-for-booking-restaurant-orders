@@ -106,7 +106,7 @@ public class ProfileController {
 			serviceOrder.update(order);
 		}
 		
-		return "redirect:/preorder";
+		return "redirect:/menu";
 	}
 	@RequestMapping(path = "/deleteFood/{id}", method = RequestMethod.GET)
 	public String deleteFoodFromOrder(Principal principal, @PathVariable("id") Long id) {
@@ -123,7 +123,19 @@ public class ProfileController {
 		}
 		return "redirect:/preorder";
 	}
-	
+	@RequestMapping(path = "/deleteOrder/{id}", method = RequestMethod.GET)
+	public String deleteOrder(Principal principal, @PathVariable("id") Long id) throws Exception {
+		User user = service.findByUsername(principal.getName());
+		for(Order order:user.getMyOrders()) {
+			if(order.getId()==id) {
+				user.getMyOrders().remove(order);
+				service.update(user);
+				serviceOrder.delete(id);
+				break;
+			}
+		}
+		return "redirect:/preorder";
+	}
 	@RequestMapping(path = "/confirm/{id}", method = RequestMethod.POST)
 	public String confirmOrder(Principal principal, @PathVariable("id") Long id) {
 		//проверка, есть ли не оформленный заказ
