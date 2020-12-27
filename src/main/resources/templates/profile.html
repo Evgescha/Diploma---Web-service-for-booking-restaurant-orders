@@ -53,7 +53,7 @@
     <div class="container">
         <div class="order-items">
         <h3 class="text-center">Страница предзаказа</h3>
-        <h4 class="text-center">На странице будут отображены блюда заказов, еще не оформленных</h4>
+        <h4 class="text-center mb-4">На странице будут отображены все заказы клиента и их статусы</h4>
             <div class="row item p-3" th:each="entityM:${entity.myOrders}" >
                 <div class="h3 order-title" th:text="'Заказ на дату:'+${entityM.dates}">Заказ на 25,25,2025</div>
                 <div class="order-table" th:text="'Статус: '+${entityM.status}">status</div>

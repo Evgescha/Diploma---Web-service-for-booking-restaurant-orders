@@ -31,8 +31,8 @@
 					<div class=" mr-5">Бронировать на дату</div>                	
 	                <input type="date" class="ml-1 order-dates" th:value="${entityM.dates}" name="dates" required>
                 </div>
-                <input class="btn btn-primary" type="submit" required value="Подтвердить бронь" th:if="${#lists.size(entityM.foods)>0}">
-                <a class="btn btn-primary" th:href="'/profile/deleteOrder/'+${entityM.id}">Удалить эту бронь</a>
+                <input class="btn btn-primary mt-5" type="submit" required value="Подтвердить бронь" th:if="${#lists.size(entityM.foods)>0}">
+                <a class="btn btn-primary mt-5" th:href="'/profile/deleteOrder/'+${entityM.id}">Удалить эту бронь</a>
                 <div class="order-food">
                     <div class="order-food-item" >
                     	<table class="table table-striped table-responsive-md">
