@@ -9,7 +9,8 @@
 <body>
     
 	<div th:replace="~{commons :: nav}"></div>
-	<h3 class="text-center" th:if="${success}">Вы успешно зарегистрировались! Можете войти в систему</h3>
+	<h3 class="text-center" th:if="${success}">Вы успешно зарегистрировались! Можете войти в систему.</h3>
+	<h3 class="text-center" th:if="${(param.error != null) and (param.error[0] == 'true')}">Ошибка входа в систему! Проверьте вводимые данные.</h3>
     <section id="main-page">
         <div class="container">
             <div class="row">

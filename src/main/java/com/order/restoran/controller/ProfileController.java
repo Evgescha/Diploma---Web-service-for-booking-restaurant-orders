@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -137,9 +138,10 @@ public class ProfileController {
 		return "redirect:/preorder";
 	}
 	@RequestMapping(path = "/confirm/{id}", method = RequestMethod.POST)
-	public String confirmOrder(Principal principal, @PathVariable("id") Long id) {
+	public String confirmOrder(Principal principal, @PathVariable("id") Long id,@Param("peopleCount") Integer peopleCount) {
 		//проверка, есть ли не оформленный заказ
 		Order order = serviceOrder.read(id);
+		order.setPeopleCount(peopleCount);
 		//устанавливае статус оформлен, и на проверку
 		order.setStatus(serviceStatus.read(2));
 		serviceOrder.update(order);
