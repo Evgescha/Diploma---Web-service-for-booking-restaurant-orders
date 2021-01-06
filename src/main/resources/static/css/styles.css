@@ -84,3 +84,10 @@ input, select, a.btn.btn-primary {
     font-size: 25px;
     line-height: 1.6;
 }
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    margin: 5px;
+    border-radius: 20px;
+}
