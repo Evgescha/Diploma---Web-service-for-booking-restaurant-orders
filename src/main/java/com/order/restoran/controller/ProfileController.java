@@ -2,6 +2,7 @@ package com.order.restoran.controller;
 
 import java.security.Principal;
 import java.sql.Date;
+import java.sql.Time;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -138,10 +139,13 @@ public class ProfileController {
 		return "redirect:/preorder";
 	}
 	@RequestMapping(path = "/confirm/{id}", method = RequestMethod.POST)
-	public String confirmOrder(Principal principal, @PathVariable("id") Long id,@Param("peopleCount") Integer peopleCount) {
+	public String confirmOrder(Principal principal, @PathVariable("id") Long id,@Param("peopleCount") Integer peopleCount,
+			@Param("dates") Date dates,@Param("times") String times) {
 		//проверка, есть ли не оформленный заказ
 		Order order = serviceOrder.read(id);
 		order.setPeopleCount(peopleCount);
+		order.setDates(dates);
+		order.setTimes(Time.valueOf(times+":00"));
 		//устанавливае статус оформлен, и на проверку
 		order.setStatus(serviceStatus.read(2));
 		serviceOrder.update(order);

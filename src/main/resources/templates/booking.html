@@ -17,7 +17,7 @@
         <div class="order-items">
         <h3 class="text-center">Не утвержденные заявки на брони пользователей</h3>
             <div class="row item p-3" th:each="entityM:${list}" th:if="${entityM.status.id==2}">
-                <div class="h3 order-title" th:text="'Заказ на дату:'+${entityM.dates}">Заказ на 25,25,2025</div>
+                <div class="h3 order-title" th:text="'Заказ на дату:'+${entityM.dates}+', '+${entityM.times}">Заказ на 25,25,2025</div>
                 <div class="order-table" th:text="'Заказал: '+${entityM.creator.firstname}+' '+${entityM.creator.lastname}">Пользователь</div>
                 <div class="order-table" th:text="'Статус: '+${entityM.status}">status</div>
                 <div class="order-table" th:text="'Стол: '+${entityM.table}">Stol</div>
@@ -60,7 +60,7 @@
         <div class="order-items">
         <h3 class="text-center">Утвержденные, но не выполненные</h3>
             <div class="row item p-3" th:each="entityM:${list}" th:if="${entityM.status.id==3}">
-               <div class="h3 order-title" th:text="'Заказ на дату:'+${entityM.dates}">Заказ на 25,25,2025</div>
+               <div class="h3 order-title" th:text="'Заказ на дату:'+${entityM.dates}+', '+${entityM.times}">Заказ на 25,25,2025</div>
                 <div class="order-table" th:text="'Заказал: '+${entityM.creator.firstname}+' '+${entityM.creator.lastname}">Пользователь</div>
                 <div class="order-table" th:text="'Статус: '+${entityM.status}">status</div>
                 <div class="order-table" th:text="'Стол: '+${entityM.table}">Stol</div>
@@ -104,7 +104,7 @@
         <div class="order-items">
         <h3 class="text-center">Выполненные</h3>
             <div class="row item p-3" th:each="entityM:${list}" th:if="${entityM.status.id==4}">
-               <div class="h3 order-title" th:text="'Заказ на дату:'+${entityM.dates}">Заказ на 25,25,2025</div>
+               <div class="h3 order-title" th:text="'Заказ на дату:'+${entityM.dates}+', '+${entityM.times}">Заказ на 25,25,2025</div>
                 <div class="order-table" th:text="'Заказал: '+${entityM.creator.firstname}+' '+${entityM.creator.lastname}">Пользователь</div>
                 <div class="order-table" th:text="'Статус: '+${entityM.status}">status</div>
                 <div class="order-table" th:text="'Стол: '+${entityM.table}">Stol</div>
