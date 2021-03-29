@@ -41,6 +41,7 @@ public class AdminController {
 		model.addAttribute("typesFood", serviceTypeFood.repository.findAll());
 		model.addAttribute("foods",  serviceFood.repository.findAll());
 		model.addAttribute("typesTable",  serviceTypeTable.repository.findAll());
+		model.addAttribute("statuses",  serviceStatus.repository.findAll());
 		model.addAttribute("users",  serviceUser.repository.findAll());
 		return "control";
 	}
